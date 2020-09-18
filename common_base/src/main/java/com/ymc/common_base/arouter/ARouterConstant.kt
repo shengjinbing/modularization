@@ -15,7 +15,8 @@ object ARouterConstant {
 
     //跳转到首页
     const val HOME_ACTIVITY = "/home/HomeActivity"
-    const val SETTING_ACTIVITY = "/home/SettingActivity"
+
+    const val SETTING_ACTIVITY = "/lixng/SettingActivity"
 
 
 }

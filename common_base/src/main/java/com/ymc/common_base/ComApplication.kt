@@ -2,8 +2,8 @@ package com.ymc.common_base
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
-import com.tencent.mmkv.MMKV
 import com.ymc.common.startup.WidgetManager
+import com.ymc.common.utils.LogUtils
 
 /**
  * 单模块运行使用， 仅作为独立模块运行时初始化数据
@@ -23,9 +23,8 @@ open class ComApplication : Application() {
             ARouter.openDebug() // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         // 尽可能早，推荐在Application中初始化
+        LogUtils.e("Application初始化")
         ARouter.init(this)
-        MMKV.initialize(this)
-
     }
 
 }

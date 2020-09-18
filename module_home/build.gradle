@@ -6,6 +6,13 @@ if (isModule.toBoolean()) {
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 android {
     compileSdkVersion build_version.compileSdkVersion
     defaultConfig {
@@ -31,13 +38,6 @@ android {
                 }
             }
         }
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
-
     }
 
 
@@ -50,6 +50,8 @@ android {
 
 }
 
+
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation depend_plugins.navigation_fragment
@@ -59,7 +61,7 @@ dependencies {
     implementation depend_plugins.gson
 
     implementation project(':common_base')
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    //每个组件都需要引入
+    kapt libs.arouter_compiler
 
 }

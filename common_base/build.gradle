@@ -1,13 +1,12 @@
 ext.isLibrary = true
-apply from: rootProject.file('module.gradle')
-
+apply from: rootProject.file('lib.gradle')
 dependencies {
     api project(':lib_common')
-    // 微信 键值对储存
-    api libs.mmkv
-    // 路由
+
+    // 只需要在base中引入一次
     api libs.arouter_api
-    annotationProcessor libs.arouter_compiler
+    //arouter编译器插件，每个组件都需引入
+    kapt libs.arouter_compiler
 
     api depend_plugins.kotlin_stdlib
     api depend_plugins.core_ktx
