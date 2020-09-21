@@ -7,6 +7,7 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:name="com.ymc.common_base.ComApplication"
         android:theme="@style/home_AppTheme">
         <activity
