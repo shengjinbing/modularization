@@ -41,7 +41,23 @@
      使用R2而不是R
      同样，click事件里也必须采用R2.id来替换R.id，但是onClick()方法里不能使用switch case语句，
      必须使用if else来代替，在方法体内部是不能使用R2.id的，R2类只限于在外部注解中使用。
-  
+     
+     
+“终于懂了” 系列：Android组件化，全面掌握！
+https://mp.weixin.qq.com/s/WSzpJXXocajJjmWgYem3fA
+1.业务组件，如何实现单独运行调试？
+那么如何进行集成调试呢？使用maven引用组件：1、发布组件的arr包 到公司的maven仓库，2、然后在壳工程中就使用implemention依赖就可以了，
+和使用第三方库一毛一样。另外arr包 分为 快照版本（SNAPSHOT） 和 正（Realease）式版本，快照版本是开发阶段调试使用，正式版本是正式发版使用
+2.业务组件间 没有依赖，如何实现页面的跳转？(重点)
+因为ARouter比较特殊，“arouter-compiler ” 的annotationProcessor依赖 需要所有使用到 ARouter 的组件中都单独添加，
+ 不然无法在 apt 中生成索引文件，就无法跳转成功。
+3.业务组件间 没有依赖，如何实现组件间通信/方法调用？
+4.业务组件间 没有依赖，如何获取fragment实例？
+  ARouter直接获取。
+5.业务组件不能反向依赖壳工程，如何获取Application实例、如何获取Application onCreate()回调（用于任务初始化）？
+  你可能会说，直接在壳工程Application的onCreate操作就可以啊。但是这样做会带来问题：因为我们希望壳工程和业务组件 代码隔离
+  （虽然有依赖），并且 我们希望组件内部的任务要在业务组件内部完成。
+  AppLifecycle插件
 
   
   
